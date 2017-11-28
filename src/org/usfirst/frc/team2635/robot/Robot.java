@@ -114,6 +114,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		launcher.setPIDF(0.05, 0, 0, 0.02);
+		
 		launcher.setSetpoint(2000);
 	}
 
@@ -127,8 +128,8 @@ public class Robot extends IterativeRobot {
 		//talon0.set(launcher.calculateSpeed(talon0.getSpeed()));
 		//talon1.set(-launcher.calculateSpeed(-talon1.getSpeed()));
 		
-		talon0.set(0.5);
-		talon1.set(-0.5);
+		talon0.set(launcher.calculateSpeed(talon0.getSpeed()));
+		talon1.set(launcher.calculateSpeed(talon1.getSpeed()));
 		
 		System.out.println("Talon0 Speed: " + talon0.getSpeed() +". Talon1 Speed: " + talon1.getSpeed() + ".");
 	}
